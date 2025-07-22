@@ -1,3 +1,7 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
 <%@page import="chap04_el.Product"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -59,6 +63,69 @@ EL (Expression Language)
 <div>${product.price}</div>
 <div>${product["model"]}</div>
 <div>${product["price"]}</div>
+<hr>
+<%
+ // Map과 EL
+ Map<String, Object> map = new HashMap<>();
+ map.put("model", "텀블러");
+ map.put("price", 30000);
+ request.setAttribute("map", map);
+%>
+<div>${map}</div>
+<div>${map.model}</div>
+<div>${map.price}</div>
+<hr>
+<%
+  // List와 EL
+  List<Product> products = new ArrayList<>();
+  products.add(product);
+  request.setAttribute("products", products);
+%>
+<div>${products}</div>
+<div>${products.get(0).model}</div>
+<div>${products.get(0).price}</div>
+<div>${products[0].model}</div>
+<div>${products[0].price}</div>
+<hr>
+<%
+ // 연산에서 사용할 데이터
+ request.setAttribute("a", 5);
+ request.setAttribute("b", 2);
+%>
+<div>a + b = ${a + b}</div>
+<div>a - b = ${a - b}</div>
+<div>a * b = ${a * b}</div>
+<div>a / b = ${a / b}</div>
+<div>a / b = ${a div b}</div>
+<div>a % b = ${a % b}</div>
+<div>a % b = ${a mod b}</div>
+<hr>
 
+<div>a > b  : ${a > b},  ${a gt b}</div>
+<div>a >= b : ${a >= b}, ${a ge b}</div>
+<div>a < b  :  ${a < b},  ${a lt b}</div>
+<div>a <= b : ${a <= b}, ${a le b}</div>
+<div>a == b : ${a == b}, ${a eq b}}</div>
+<hr>
+
+<div>a == 5 && b == 5 : ${a == 5 && b == 5}, ${a eq 5 and b eq 5}</div>
+<div>a == 5 || b == 5 : ${a == 5 || b == 5}, ${a eq 5 or b eq 5}</div>
+<div>!(a == 5) : ${!(a == 5)}, ${not(a eq 5)} </div>
+<hr>
+
+<div>${a > 0 ? "양수" : "음수"}</div>
+<hr>
+
+<div>a 와 b 문자열 연결(+는 지원이 안되고 +=는 지원이 된다) : ${a += b}</div>
+<hr>
+<%
+ // 비어있는 List
+ request.setAttribute("list", new ArrayList<>());
+%>
+<div>List가 비어 있는가? ${empty list}</div>
+<div>List가 비어 있지 않는가? ${not empty list}</div>
+<hr>
+<%-- request의 데이터 처리 방법 확인을 위한 링크 --%>
+<a href=" ${pageContext.request.contextPath}/RequestDataHandle">요청</a>;
 </body>
 </html>
