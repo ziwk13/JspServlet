@@ -1,3 +1,4 @@
+<%@page import="chap04_el.Product"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,12 +22,43 @@ EL (Expression Language)
 6. EL은 서블릿 컨테이너의 작은 영역부터 큰 영역으로 이동하면서 값을 찾는다.
    page -> requese -> session -> application
 7. EL 내장 객체를 활용 할 수 있다
-   1) pageScope        page 영역의 객체 참조
-   2) requestScope     request 영역의 객체 참조
-   3) sessionScope     session 영역의 객체 참조
-   4) applicationScope application 영역의 객체 참조
-   5) param 		   요청 파라미터
+   1) pageScope        page 영역의 객체 참조		 ${pageScope.객체}
+   2) requestScope     request 영역의 객체 참조      ${requestScope.객체}
+   3) sessionScope     session 영역의 객체 참조      ${sessionScope.객체}
+   4) applicationScope application 영역의 객체 참조  ${applicationScopr.객체}
+   5) param 		   요청 파라미터				 ${param.파라미터}
+   6) header    	   요청 헤더 참조          		 ${header.헤더}
+   7) cookie  	 	   쿠키 값 					     ${cookie.쿠키}
+   8) pageContext      JSP의 PageContext 객체
+   9) request          HttpServletRequest 객체       ${pageContext.request.객체}
+   10) session		   HttpSession 객체              ${pageContext.session.객체}
+   11) servletContext  ServletContext 객체           ${pageContext.servletContext.객체}
  --%>
+ <%
+ // 서블릿 컨테이너 영역에 데이터 저장
+ pageContext.setAttribute("name", "aaa");
+ request.setAttribute("name", "bbb");
+ session.setAttribute("name", "ccc");
+ application.setAttribute("name", "ddd");
+ %>
+
+<div>${name}</div>
+<div>${requestScope.name}</div>
+<div>${sessionScope.name}</div>
+<div>${applicationScope.name}</div>
+
+<%
+ // 객체와 EL
+ Product product = new Product();
+ product.setModel("리모콘");
+ product.setPrice(10000);
+ request.setAttribute("product", product);
+%>
+<div>${product}</div>
+<div>${product.model}</div>
+<div>${product.price}</div>
+<div>${product["model"]}</div>
+<div>${product["price"]}</div>
 
 </body>
 </html>
