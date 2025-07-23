@@ -71,7 +71,7 @@ public class BoardDaoImpl implements BoardDao {
         sb.append("SELECT b.bid, u.uid, u.nickname, b.title, b.content, b.created_at, b.modified_at");
         sb.append("  FROM tbl_board b INNER JOIN tbl_user u");
         sb.append("    ON b.uid = u.uid");
-        sb.append(" ODER BY bid DESC");
+        sb.append(" ORDER BY bid DESC");
         sb.append(" LIMIT 0, 10");
         sql = sb.toString();
         ps = con.prepareStatement(sql);

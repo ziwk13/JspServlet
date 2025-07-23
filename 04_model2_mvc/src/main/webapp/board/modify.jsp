@@ -10,6 +10,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-  <a href="${contextPath}/board/list.jsp">boards</a>
+
+	<h1>게시글 수정 페이지</h1>
+
 </body>
 </html>
