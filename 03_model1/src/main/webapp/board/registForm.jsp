@@ -15,7 +15,6 @@ text-align: center;
 }
 .form{
 border: 1px solid black;
-border-collapse: separate;
 margin: 0 auto;
 width: auto;
 display: block;

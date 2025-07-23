@@ -8,13 +8,20 @@ public class BoardDTO {
 	private UserDTO user; // uid, nickname 관리
 	private String title;
 	private String content;
+	private String nickname;
 	private Timestamp createdAt;  // MySQL's TIMESTAMP 타입은 java
 	private Timestamp modifiedAt;
 	
 	public int getBid() {
 		return bid;
 	}
-	public void setBid(int bid) {
+	public String getNickname() {
+    return nickname;
+  }
+  public void setNickname(String nickname) {
+    this.nickname = nickname;
+  }
+  public void setBid(int bid) {
 		this.bid = bid;
 	}
 	public UserDTO getUser() {

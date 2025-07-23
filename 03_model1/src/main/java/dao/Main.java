@@ -16,7 +16,7 @@ public class Main {
     System.out.println(boards.size());
     System.out.println(boards);
     
-    BoardDTO board = dao.getBoadById(1);
+    BoardDTO board = dao.getBoardById(1);
     System.out.println(board);
     
     UserDTO user = new UserDTO();

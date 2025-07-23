@@ -58,7 +58,7 @@ width: max-content;
 					<tr>
 						<td>${board.bid}</td>
 						<td>${board.user.uid}</td>
-						<td>${board.title}</td>
+						<td><a href="${contextPath}/board/detail.jsp?bid=${board.bid}">${board.title}</a></td>
 						<td>${board.createdAt}</td>
 					</tr>
 				</c:forEach>

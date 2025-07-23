@@ -35,65 +35,30 @@ public class UserDAO {
     private ResultSet rs;
     private String sql;
     
-    // 조회 (목록)
-    public List<BoardDTO> getBoards() {
-      List<BoardDTO> boards = new ArrayList<BoardDTO>();
+    //----- 조회 (목록)
+    public List<UserDTO> getUsers() {
+      List<UserDTO> users = new ArrayList<UserDTO>();
       try {
         con = DBUtils.getConnection();
-        sql = "SELECT bid, uid, title, content, created_at, modified_at FROM tbl_board ORDER BY created_at ASC";
+        sql = "SELECT uid, nickname FROM tbl_user ORDER BY uid";
         ps = con.prepareStatement(sql);
         rs = ps.executeQuery();
-        while(rs.next()) {
-          int bid = rs.getInt(1);
-          int uid = rs.getInt(2);
-          String title = rs.getString(3);
-          String content = rs.getString(4);
-          Timestamp createdAt = rs.getTimestamp(5);
-          Timestamp modifiedAt = rs.getTimestamp(6);
-          // 결과 rs를 BoardDTO로 변환
-          BoardDTO board = new BoardDTO();
-          board.setBid(bid);
+        while (rs.next()) {
+          //----- DB에서 가져온 결과 ResultSet
+          int uid = rs.getInt(1);
+          String nickname = rs.getString(2);
+          //----- 결과 ResultSet를 UserDTO로 변환 
           UserDTO user = new UserDTO();
           user.setUid(uid);
-          board.setUser(user);
-          board.setTitle(title);
-          board.setContent(content);
-          board.setCreatedAt(createdAt);
-          board.setModifiedAt(modifiedAt);
-          // 변환된 BoardDTO를 List에 저장
-          boards.add(board);
-          
+          user.setNickname(nickname);
+          //----- 변환된 UserDTO를 List에 저장
+          users.add(user);
         }
       } catch (Exception e) {
+        e.printStackTrace();
       } finally {
         DBUtils.close(con, ps, rs);
       }
-      return boards;
-    }
-    // 조회 (단일 항목)
-    public BoardDTO getBoadById(int bid) {
-      BoardDTO board = null;
-      try {
-        con = DBUtils.getConnection();
-        sql = "SELECT bid, uid, title, content, created_at, modified_at FROM tbl_board WHERE bid = ?";
-        ps = con.prepareStatement(sql);
-        ps.setInt(1, bid);  // 쿼리문의 1번째 placeholder(?)에 bid 전달하기
-        rs = ps.executeQuery();
-        if(rs.next()) {
-          // DB에서 가져온 결과 ResultSet를 BoardDTO로 변환
-          board.setBid(rs.getInt(1));
-          UserDTO user = new UserDTO();
-          user.setUid(rs.getInt(2));
-          board.setUser(user);
-          board.setTitle(rs.getString(3));
-          board.setContent(rs.getString(4));
-          board.setCreatedAt(rs.getTimestamp(5));
-          board.setModifiedAt(rs.getTimestamp(6));
-        }
-      } catch (Exception e) {
-      } finally {
-        DBUtils.close(con, ps, rs);
-      }
-      return board;
+      return users;
     }
 }
