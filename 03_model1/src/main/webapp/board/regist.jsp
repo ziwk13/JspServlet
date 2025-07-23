@@ -7,6 +7,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <%
+
   // regustForm.jsp에서 제출된 양식
   request.setCharacterEncoding("UTF-8");
   String uid = request.getParameter("uid");
