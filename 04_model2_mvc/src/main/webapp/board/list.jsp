@@ -11,10 +11,10 @@
 </head>
 <body>
 	<style>
-	div {
+div {
 	box-sizing: border-box;
-	}
-	
+}
+
 .wrap {
 	text-align: center;
 	width: 1024px;
@@ -22,7 +22,7 @@
 }
 
 .flex-container {
-	marigin-top: 20px;
+	margin-top: 20px;
 	text-align: center;
 	display: flex;
 	flex-wrap: wrap; /* 여러 줄로 flex-item 감싸기 */
@@ -30,13 +30,15 @@
 }
 
 .flex-item {
-	flex: 0 0 calc(20% - 12px); /* flex-grow (공간이 남으면 아이템을 얼마나 늘이나?) flex-shrink(공간이 부족하면 아이템을 얼마나 줄이나) flex-basis */
+	flex: 0 0 calc(20% - 12px);
+	/* flex-grow (공간이 남으면 아이템을 얼마나 늘이나?) flex-shrink(공간이 부족하면 아이템을 얼마나 줄이나) flex-basis */
 	border-radius: 5px;
 	border: 1px solid black;
 	text-align: center;
 	padding-top: 10px;
 	transition: transform 0.3s ease;
 }
+
 .flex-item:hover {
 	transform: scale(1.05); /* 5% 확대 */
 	background-color: beige;
@@ -74,7 +76,7 @@ a {
 				</div>
 			</c:forEach>
 		</div>
-			<%-- `` 내부에서 EL(${})과 템플릿 리터럴(${}) 구분하기
+		<%-- `` 내부에서 EL(${})과 템플릿 리터럴(${}) 구분하기
 				 ${contextPath} : 자바 변수
 				 \${bid} : 자바스크립트 변수 --%>
 		<script type="text/javascript">
