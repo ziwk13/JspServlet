@@ -23,7 +23,7 @@
 	<button type="submit">로그인</button>
 	
 	<c:if test="${not empty error}">      
-		<div style="fonte-size: 12px; color=red;">${error}</div>
+		<div style="font-size: 12px; color: red;">${error}</div>
 	</c:if>
 	</form>
 

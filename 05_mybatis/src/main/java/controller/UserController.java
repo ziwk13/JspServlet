@@ -17,7 +17,7 @@ import service.UserServiceImpl;
  * web.xml의 <filter-mapping> 태그가 우선적으로 고려되지만, 실행 순서가 보장되어 있지 않는다.
  */
 
-// @WebServlet("/user/*")
+ @WebServlet("/user/*")
 
 public class UserController extends HttpServlet {
   

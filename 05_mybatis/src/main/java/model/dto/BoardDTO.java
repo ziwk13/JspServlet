@@ -1,6 +1,6 @@
 package model.dto;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class BoardDTO {
 
@@ -75,8 +75,8 @@ public class BoardDTO {
 
   @Override
   public String toString() {
-    return "BoardDTO [bid=" + bid + ", user=" + user + ", title=" + title + ", content=" + content + ", createdAt="
-        + createdAt + ", modifiedAt=" + modifiedAt + "]";
+    return "BoardDTO [bid= " + bid + ", user= " + user + ", title= " + title + ", content= " + content + ", createdAt= "
+        + createdAt + ", modifiedAt= " + modifiedAt + "]";
   }
   
 }
