@@ -47,7 +47,7 @@ public class HttpSessionScope extends HttpServlet {
 	  //----- 데이터 조회
 	  boolean data2 = (boolean) session.getAttribute("data2");
 	  System.out.println(data2);
-	  
+	 
 	  //----- 세션 삭제 (로그아웃 등)
 	  session.invalidate();
 	
